@@ -1,0 +1,10 @@
+
+
+create table client (num_client int(10) not null auto_increment ,desc_client varchar(20),etat_client varchar(20), primary key (num_client))ENGINE=INNODB;
+create table Commande (NUM_COMMANDE int(10) not null auto_increment primary key ,num_client int(10) references client(num_client),DATE_D_ARRIVEE Date , ETAT_COMMANDE varchar(10))ENGINE=INNODB;
+create table Produit (NUM_PRODUIT int(10) not null auto_increment primary key, DESC_PRODUIT varchar(20), QUAN_STCK int(10), PRIX_UNITAIR double(5,3))ENGINE=INNODB;
+create table Ligne_commande (NUM_PRODUIT int(10) references Produit,NUM_COMMANDE int(10) references Commande, QUANTITE_REELLE int(20),constraint Ligne_commande_pr primary key (NUM_PRODUIT,NUM_COMMANDE))ENGINE=INNODB; 
+create table Facture (NUM_FACTURE int(10) not null auto_increment primary key,NUM_BON int(10) references Bon_de_livraison(NUM_BON),DATE_reglee date references Reglee, DATE_FAC Date, DATE_ECH Date, MONTANT_FACTURE double(10,3))ENGINE=INNODB; 
+create table Reglee (NUM_FACTURE int(10) not null  references Facture ,DATE_reglee Date , MONTANT double(10,3), primary key(NUM_FACTURE)); 
+create table Bon_de_livraison (NUM_BON int(10) not null auto_increment primary key,NUM_COMMANDE int(10) references Commande(NUM_COMMANDE),NUM_PRODUIT int(10) references Produit(NUM_PRODUIT), DATE_BON date , POIDS_COLIS double(5,3), NOMBRE_COLIS int(10), NOM_PREPAT varchar(10))ENGINE=INNODB; 
+ 
