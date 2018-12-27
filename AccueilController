@@ -1,0 +1,68 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package projetsi;
+
+import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+
+/**
+ * FXML Controller class
+ *
+ * @author User
+ */
+public class AccueilController implements Initializable {
+ @FXML 
+ private TableView<Produit> table;
+ 
+private void initacc() throws SQLException{
+    ArrayList<Produit> lp = new ArrayList<>();
+     Statement  st = ProjetSi.connexion.createStatement();
+     ResultSet r =st.executeQuery("select * from produit;");
+     Produit p;
+     while(r.next())
+     {
+         p= new Produit(r.getInt(1),r.getString(2),r.getInt(3),r.getFloat(4));
+         lp.add(p);
+     }
+     System.out.println(lp);
+     ObservableList <Produit> ob; 
+     ob = FXCollections.observableArrayList(lp);
+     table.setItems(ob);
+}
+    @Override
+    public void initialize(URL url, ResourceBundle rb) 
+    {
+        TableColumn <Produit,Integer> clcNum = new TableColumn<Produit,Integer>("Numero :");
+        TableColumn <Produit,String> clcDesc = new TableColumn<Produit,String>("Description :");
+        TableColumn <Produit,Float> clcprix = new TableColumn<Produit,Float>("Prix :");
+        clcNum.setCellValueFactory(new PropertyValueFactory<>("num_produit"));
+        clcDesc.setCellValueFactory(new PropertyValueFactory<>("desc_produit"));
+        clcprix.setCellValueFactory(new PropertyValueFactory<>("prix_unitair"));
+        table.getColumns().addAll(clcNum,clcDesc,clcprix);
+        try
+        {
+            initacc();
+        }
+        catch(Exception e)
+         {
+                    Logger.getLogger(AccueilController.class.getName()).log(Level.SEVERE,null,e);
+                }
+    }    
+    
+}
