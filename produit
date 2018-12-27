@@ -1,0 +1,74 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package projetsi;
+
+/**
+ *
+ * @author User
+ */
+public class Produit {
+    private int  num;
+    private String description ;
+    private int quantiteStock;
+    private float prixUnitaire;
+
+    public Produit() {
+    }
+
+    public Produit(int num, String description, int quantiteStock, float prixUnitaire) {
+        this.num = num;
+        this.description = description;
+        this.quantiteStock = quantiteStock;
+        this.prixUnitaire = prixUnitaire;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getQuantiteStock() {
+        return quantiteStock;
+    }
+
+    public float getPrixUnitaire() {
+        return prixUnitaire;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setQuantiteStock(int quantiteStock) {
+        this.quantiteStock = quantiteStock;
+    }
+
+    public void setPrixUnitaire(float prixUnitaire) {
+        this.prixUnitaire = prixUnitaire;
+    }
+
+    
+
+    @Override
+    public boolean equals(Object obj) {
+        Produit p = (Produit) obj;
+        return (this.num==p.num);
+    }
+
+    @Override
+    public String toString() {
+        return  "num=" + num + ", description=" + description + ", quantiteStock=" + quantiteStock + ", prixUnitaire=" + prixUnitaire ;
+    }
+    
+  
+}
