@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <TableView prefHeight="332.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn prefWidth="75.0" text="Num:" />
+          <TableColumn prefWidth="75.0" text="Description" />
+            <TableColumn prefWidth="75.0" text="Quantité" />
+            <TableColumn prefWidth="75.0" text="Prix " />
+        </columns>
+      </TableView>
+   </center>
+   <top>
+      <AnchorPane prefHeight="35.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <ToolBar layoutY="-6.0" prefHeight="36.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <items>
+                  <Label prefHeight="17.0" prefWidth="113.0" text="Venpiece" />
+               </items>
+               <effect>
+                  <Blend />
+               </effect>
+            </ToolBar>
+         </children>
+      </AnchorPane>
+   </top>
+</BorderPane>
